@@ -372,6 +372,41 @@
             border: 2px solid var(--turquesa);
         }
 
+        /* MODAL */
+            .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+        }
+
+            .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 25px;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 8px;
+        }
+
+            .close {
+            float: right;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+    /* GANTT */
+            .gantt-item {
+            margin: 10px 0;
+        }
+
+            .gantt-bar {
+            height: 10px;
+            background: var(--turquesa);
+            border-radius: 5px;
+            margin-top: 5px;
+        }
         /* Responsive */
         @media (max-width: 768px) {
             .two-col { grid-template-columns: 1fr; }
@@ -379,7 +414,7 @@
             .categories-grid { grid-template-columns: 1fr; }
             #pdf-content { padding: 10px; }
         }
-
+        
         /* Print optimizations */
         @media print {
             body { background: white; }
@@ -388,41 +423,6 @@
             .projects-table { page-break-inside: auto; }
             .projects-table tr { page-break-inside: avoid; }
         }
-        /* ===== MODAL ===== */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 999;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
-}
-
-.modal-content {
-    background: white;
-    margin: 5% auto;
-    padding: 25px;
-    width: 90%;
-    max-width: 600px;
-    border-radius: 8px;
-}
-
-.close {
-    float: right;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-/* ===== GANTT ===== */
-.gantt-item {
-    margin: 10px 0;
-}
-
-.gantt-bar {
-    height: 10px;
-    background: var(--turquesa);
-    border-radius: 5px;
-    margin-top: 5px;
-}
     </style>
 <base target="_blank">
 </head>
