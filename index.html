@@ -851,13 +851,18 @@
                 
                 const row = `
                     <tr>
-                        <td><strong>${p.name}</strong></td>
+                        <td>
+                            <strong onclick="openProject('${p.name}')" style="cursor:pointer; color: var(--turquesa);">
+                        ${p.name}
+                        </strong>
+                        </td>
                         <td>${p.area}</td>
                         <td><span class="${statusClass}">${statusText}</span></td>
                         <td><span class="badge ${badgeClass}">${p.funding}</span></td>
                         <td>${p.type}</td>
                     </tr>
-                `;
+`                ;
+    
                 tbody.innerHTML += row;
             });
         }
@@ -922,5 +927,16 @@
         // Inicializar tabla
         renderTable('all');
     </script>
+        <div id="project-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+
+        <h2 id="modal-title"></h2>
+        <p id="modal-description"></p>
+
+        <h3 style="margin-top:20px;">Plan de implementación</h3>
+        <div id="gantt"></div>
+    </div>
+</div>
 </body>
 </html>
