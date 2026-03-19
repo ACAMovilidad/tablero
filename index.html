@@ -7,7 +7,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        *:root {
+        :root {
              --turquesa: #00A8A8;
              --verde: #A4D65E;
              --gris-claro: #F4F6F7;
@@ -388,10 +388,57 @@
             .projects-table { page-break-inside: auto; }
             .projects-table tr { page-break-inside: avoid; }
         }
+        /* ===== MODAL ===== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background: white;
+    margin: 5% auto;
+    padding: 25px;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 8px;
+}
+
+.close {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* ===== GANTT ===== */
+.gantt-item {
+    margin: 10px 0;
+}
+
+.gantt-bar {
+    height: 10px;
+    background: var(--turquesa);
+    border-radius: 5px;
+    margin-top: 5px;
+}
     </style>
 <base target="_blank">
 </head>
-<body>
+<div id="project-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+
+        <h2 id="modal-title"></h2>
+        <p id="modal-description"></p>
+
+        <h3 style="margin-top:20px;">Plan de implementación</h3>
+        <div id="gantt"></div>
+    </div>
+</div>
+   
+    <body>
 
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
         
