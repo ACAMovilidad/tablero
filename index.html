@@ -14,7 +14,7 @@
              --gris-medio: #E0E0E0;
              --gris-oscuro: #333333;
         }
-        {
+     * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -426,7 +426,6 @@
     </style>
 <base target="_blank">
 </head>
-<div id="project-modal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
 
@@ -923,7 +922,37 @@
                 alert('Error al generar PDF. Por favor intente nuevamente.');
             });
         }
+function openProject(name) {
+    const project = allProjects.find(p => p.name === name);
 
+    if (!project) {
+        alert("Proyecto no encontrado");
+        return;
+    }
+
+    document.getElementById("modal-title").innerText = project.name;
+    document.getElementById("modal-description").innerText = project.description || "Proyecto en desarrollo.";
+
+    const ganttDiv = document.getElementById("gantt");
+    ganttDiv.innerHTML = "";
+
+    if (project.gantt) {
+        project.gantt.forEach(f => {
+            ganttDiv.innerHTML += `
+                <div class="gantt-item">
+                    <div>${f.fase}</div>
+                    <div class="gantt-bar" style="width:${f.width}"></div>
+                </div>
+            `;
+        });
+    }
+
+    document.getElementById("project-modal").style.display = "block";
+}
+
+function closeModal() {
+    document.getElementById("project-modal").style.display = "none";
+}
         // Inicializar tabla
         renderTable('all');
     </script>
